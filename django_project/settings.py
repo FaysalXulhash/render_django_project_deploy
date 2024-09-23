@@ -78,8 +78,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-database_url = os.environ.get("DATABSE_URL")
-DATABASES['default'] = dj_database_url.parse('database_url')
+#database_url = os.environ.get("DATABSE_URL")
+
+DATABASES['default'] = dj_database_url.parse("postgresql://deploy_project_user:A93ZZBV10PxIrP6GRc35B5JQwyoICQB4@dpg-crodhh08fa8c738qfn5g-a.oregon-postgres.render.com/deploy_project")
 
 
 
