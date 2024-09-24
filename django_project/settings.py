@@ -23,12 +23,13 @@ SECRET_KEY = 'django-insecure-kzf!8=^xb^oo+mds#o-jzbquh%5a^a32g2@1956*yt-rx!#rs_
 DEBUG = os.environ.get('DEBUG', "False").lower() == "true"
 
 ALLOWED_HOSTS =[ os.environ.get("ALLOWED_HOSTS")]
+#ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
+    #'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -125,18 +126,22 @@ USE_TZ = True
 #STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+STATICFILES_DIRS =[BASE_DIR / "static"]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 #STATIC_HOST = os.environ.get("DJANGO_STATIC_HOST", "")
 #STATIC_URL = STATIC_HOST + "/static/"
 #static file storage white noise
-STORAGES = {
-    # ...
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+# STORAGES = {
+#     # ...
+#     "staticfiles": {
+#         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+#     },
+# }
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
